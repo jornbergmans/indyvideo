@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+if [[ -z $(mount | grep NFF2020) ]]; then
+  sudo mount -t smbfs //indyvideo@filmfetch-012/NFF2020 /Volumes/NFF2020
+fi
+
+INFOLDER="/Volumes/NFF2020/5000_subs/SRT"
+OUTFOLDER="/Volumes/NFF2020/5000_subs/WebVTT"
+SCRIPT="/Volumes/NFF2020/5000_subs/scripts/srt-to-vtt.py"
+
+if [[ ! submarine ]]; then
+  pip3 install submarine
+fi
+
+if [[ ! -d $INFOLDER ]]; then
+  "$INFOLDER not found."
+  mkdir -p "$INFOLDER"
+fi
+
+if [[ ! -d $OUTFOLDER ]]; then
+  echo "$OUTFOLDER not found."
+  mkdir -p "$OUTFOLDER"
+fi
+
+if [[ ! -e $SCRIPT ]]; then
+  echo "$SCRIPT not found. Is the server mounted?"
+fi
+
+"$SCRIPT" "$INFOLDER" "$OUTFOLDER"

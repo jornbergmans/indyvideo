@@ -1,0 +1,45 @@
+#!/usr/bin/env python3
+
+import os
+import sys
+import subprocess
+
+if len(sys.argv) < 2:
+    print("Usage: srt-to-vtt $inputfolder $outputfolder")
+    sys.exit(1)
+
+
+infolder = sys.argv[1]
+outfolder = sys.argv[2]
+
+
+def convert_to_vtt(infile, outfile):
+    makesubmarine = ['/usr/bin/env', 'submarine', infile, outfile]
+    try:
+        subprocess.run(makesubmarine)
+    except FileNotFoundError:
+        print("SRT input file {} not found.\n".format(infile))
+    except TypeError:
+        print("Input file not a valid SRT file. Please convert!\n")
+
+
+def move_to_done(infile):
+    DONE = os.path.join(str(infolder), "DONE")
+    if not os.path.exists(DONE):
+        os.mkdir(DONE)
+    os.rename(infile, os.path.join(DONE, os.path.basename(infile)))
+
+
+if __name__ == "__main__":
+    outfolder = os.path.abspath(outfolder)
+    for paths, dirs, files in os.walk(infolder):
+        path = os.path.abspath(paths)
+        for file in files:
+            if "DONE" not in paths:
+                infile = "{}/{}".format(path, file)
+                print("\nConverting {}".format(infile))
+                outfile = "{}/{}.{}".format(outfolder,
+                                            os.path.splitext(file)[0],
+                                            "vtt")
+                convert_to_vtt(infile, outfile)
+                move_to_done(infile)
