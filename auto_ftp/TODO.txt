@@ -1,0 +1,13 @@
+
+mcc file op beide kaarten, als een file van 1 naar 2 over gaat
+ -> oplossing - eerst scannen voor mcc file op alle kaartjes, dan pas sync aanzetten
+ 
+
+als ik remove, remove ik dan ook de file die nu opgenomen wordt?
+Of wordt die file niet mee gelist / dus niet geremoved? 
+ -> oplossing, niet mirror, maar naam mcc file als filter zetten, dan sync + remove per file
+
+
+sidecar file bouwen voor makkelijk invoeren / veranderen van studios / ip adressen
+dependancy packagen / curl 
+
