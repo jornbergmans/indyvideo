@@ -1,13 +1,22 @@
 
-mcc file op beide kaarten, als een file van 1 naar 2 over gaat
+1) mcc file op beide kaarten, als een file van 1 naar 2 over gaat
  -> oplossing - eerst scannen voor mcc file op alle kaartjes, dan pas sync aanzetten
  
-
-als ik remove, remove ik dan ook de file die nu opgenomen wordt?
+2) als ik remove, remove ik dan ook de file die nu opgenomen wordt?
 Of wordt die file niet mee gelist / dus niet geremoved? 
  -> oplossing, niet mirror, maar naam mcc file als filter zetten, dan sync + remove per file
 
+3) sidecar file bouwen voor makkelijk invoeren / veranderen van studios / ip adressen
 
-sidecar file bouwen voor makkelijk invoeren / veranderen van studios / ip adressen
-dependancy packagen / curl 
+4) wat als een sync mis loopt? - Hoe checken we dit? 
+ - Alarm slaan (via een mailtje?)
+ - checken op size, date created, filename is volgens mij de limiet, ivm FTP protocol.
 
+5) Past er 1 dag op een set kaartjes? -> Otto zegt nee! 
+ - oplossing; grotere kaartjes? Of vaker syncen? 
+ Als we vaker syncen - uiteindelijk tijden uit Fiona / productie sheets trekken? 
+
+6) Kunnen we de filenames uniek maken? Wat gebeurt er als er geen unieke filenames zijn?
+
+
+7) DOCKER wrappertje maken waar dit in kan draaien, altijd zelfde environment + alle dependencies te packagen.
